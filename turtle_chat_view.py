@@ -1,12 +1,15 @@
 #2016-2017 PERSONAL PROJECTS: TurtleChat!
-#WRITE YOUR NAME HERE!
+#WRITE YOUR NAME HERE! malak
 
 #####################################################################################
 #                                   IMPORTS                                         #
 #####################################################################################
 #import the turtle module
+import turtle
 #import the Client class from the turtle_chat_client module
+from turtle_chat_client import Client
 #Finally, from the turtle_chat_widgets module, import two classes: Button and TextInput
+from turtle_chat_widgets import Button , TextInput 
 #####################################################################################
 #####################################################################################
 
