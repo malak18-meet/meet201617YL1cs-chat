@@ -16,10 +16,27 @@ from turtle_chat_widgets import Button , TextInput
 #####################################################################################
 #                                   TextBox                                         #
 #####################################################################################
-#Make a class called TextBox, which will be a subclass of TextInput.
+#Make a class called TextBox, which will be a subclass of TextInput.\
+class TextBox (TextInput):
+
 #Because TextInput is an abstract class, you must implement its abstract
 #methods.  There are two:
 #
+    def draw_box (self):
+        turtle.hideturtle()
+        self.writer.hideturtle()
+        self.writer.penup()
+        self.writer.goto(self.pos)
+        self.writer.pendown()
+        self.writer.goto(self.width,-200)
+        self.writer.goto(self.width,self.height)
+        self.writer.goto(-200,self.height)
+        self.writer.goto(self.pos)
+    def write_msg(self):
+        self.writer.goto(-self.width/2+10+self.pos[0],self.pos[1]-self.height/2+20)
+        self.writer.pendown()
+        self.writer.write(self.get_msg())
+        
 #draw_box
 #write_msg
 #
@@ -56,6 +73,13 @@ from turtle_chat_widgets import Button , TextInput
 #      input: view.  This will be an instance of the View class you will make next
 #      That class will have methods inside of it to help
 #      you send messages and update message displays.
+class SendButton (Button):
+    def __init__(self,view,my_turtle=None,shape=None,pos=(0,0)):
+        
+    def fun (self):
+        self.username.send(new_msg)
+        
+        
 #####################################################################################
 #####################################################################################
 
