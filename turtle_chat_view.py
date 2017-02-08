@@ -74,9 +74,31 @@ class TextBox (TextInput):
 #      That class will have methods inside of it to help
 #      you send messages and update message displays.
 class SendButton (Button):
-    def __init__(self,view,my_turtle=None,shape=None,pos=(0,0)):
-        
+    def __init__(self,view=None,my_turtle=None,shape=None,pos=(0,-250)):
+        if view == None
+            my_view=View("Me","Partner")
+            self.view=my_view
+        else :
+            self.view=view
+        if my_turtle is None
+            self.turtle=turtle.clone()
+        else :
+            self.turtle=my_turtle
+        self.turtle.speed(0)
+        self.turtle.hideturtle()
+        self.turtle.penup()
+        self.turtle.goto(pos)
+        if shape is None:
+            self.turtle.shape('square')
+            self.turtle.shape(2,10)
+        else:
+            turtle.addshape(shape)
+            self.turtle.shape(shape)
+        self.turtle.showturtle()
+        self.turtle.onclick(self.fun)
+        turtle.listen()
     def fun (self):
+##        ,x=0,y=0
         self.username.send(new_msg)
         
         
@@ -100,19 +122,27 @@ class View:
     _LINE_SPACING=round(_SCREEN_HEIGHT/2/(_MSG_LOG_LENGTH+1))
 
     def __init__(self,username='Me',partner_name='Partner'):
+        _MSG_LOG_LENGTH=5 #Number of messages to retain in view
+        _SCREEN_WIDTH=300
+        _SCREEN_HEIGHT=600
+        _LINE_SPACING=round(_SCREEN_HEIGHT/2/(_MSG_LOG_LENGTH+1))
+
         '''
         :param username: the name of this chat user
         :param partner_name: the name of the user you are chatting with
         '''
         ###
         #Store the username and partner_name into the instance.
+        self.partner_name=partner_name
+        self.username=username
         ###
 
         ###
         #Make a new client object and store it in this instance of View
         #(i.e. self).  The name of the instance should be my_client
+        
         ###
-
+        turtle.setup(width=400,height=600,startx=None,starty=None)
         ###
         #Set screen dimensions using turtle.setup
         #You can get help on this function, as with other turtle functions,
@@ -123,7 +153,13 @@ class View:
         #
         #at the Python shell.
         ###
-
+        my_client = Cleint()
+        self.my_client=my_client
+        textbox= TextBox()
+        self.textbox=textbox
+        self.textbox.draw_box()
+        self.button=SendButton(self)
+        
         ###
         #This list will store all of the messages.
         #You can add strings to the front of the list using
@@ -138,7 +174,7 @@ class View:
         #You can use the clear() and write() methods to erase
         #and write messages for each
         ###
-
+        
         ###
         #Create a TextBox instance and a SendButton instance and
         #Store them inside of this instance
