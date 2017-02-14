@@ -23,15 +23,19 @@ class TextBox (TextInput):
 #methods.  There are two:
 #
     def draw_box (self):
+        self.pos=(-145,-200)
+        self.height=200
+        self.width=150
         turtle.hideturtle()
-        self.writer.hideturtle()
+        self.writer=turtle.clone()
         self.writer.penup()
         self.writer.goto(self.pos)
         self.writer.pendown()
         self.writer.goto(self.width,-200)
         self.writer.goto(self.width,self.height)
-        self.writer.goto(-200,self.height)
+        self.writer.goto(-145,self.height)
         self.writer.goto(self.pos)
+        self.writer.penup()
     def write_msg(self):
         self.writer.goto(-self.width/2+10+self.pos[0],self.pos[1]-self.height/2+20)
         self.writer.pendown()
