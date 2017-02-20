@@ -37,9 +37,11 @@ class TextBox (TextInput):
         self.writer.goto(self.pos)
         self.writer.penup()
     def write_msg(self):
-        self.writer.goto(-self.width/2+10+self.pos[0],self.pos[1]-self.height/2+20)
+        self.writer.clear()
+        self.writer.goto(-130,-100)
         self.writer.pendown()
-        self.writer.write(self.get_msg())
+        self.writer.write('Me :' + self.get_msg())
+        
         
 #draw_box
 #write_msg
@@ -98,8 +100,8 @@ class SendButton (Button):
         turtle.listen()
         self.view=view
         
-    def fun (self):
-##        ,x=0,y=0
+    def fun (self,x=0,y=0):
+      
         self.view.send_msg()
         
         
@@ -228,7 +230,6 @@ class View:
 
         Then, it can call turtle.listen()'''
         turtle.listen()
-        pass
 
     def msg_received(self,msg):
         '''
@@ -246,7 +247,7 @@ class View:
         #or append (to put at the end).
         #
         #Then, call the display_msg method to update the display
-        self.diplay_msg()
+        self.display_msg()
     def display_msg(self):
         '''
         This method should update the messages displayed in the screen.
@@ -257,7 +258,7 @@ class View:
         for n in range (3):
             self.msg_queue_turtles[n].write(self.msg_queue[n])
             
-        pass
+       
 
     def get_client(self):
         return self.my_client
