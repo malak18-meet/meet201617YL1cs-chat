@@ -9,7 +9,10 @@ import turtle
 #import the Client class from the turtle_chat_client module
 from turtle_chat_client import Client
 #Finally, from the turtle_chat_widgets module, import two classes: Button and TextInput
-from turtle_chat_widgets import Button , TextInput 
+from turtle_chat_widgets import Button , TextInput
+pic=turtle.Screen()
+pic.bgpic("pic.gif")
+
 #####################################################################################
 #####################################################################################
 
@@ -23,6 +26,10 @@ class TextBox (TextInput):
 #methods.  There are two:
 #
     def draw_box (self):
+        self.writer.penup()
+        self.writer.goto(-10,250)
+        self.writer.pendown()
+        self.writer.write("CHAT")
         self.pos=(-145,-200)
         self.height=200
         self.width=150
@@ -79,8 +86,10 @@ class TextBox (TextInput):
 #      input: view.  This will be an instance of the View class you will make next
 #      That class will have methods inside of it to help
 #      you send messages and update message displays.
+
 class SendButton (Button):
     def __init__(self,view,my_turtle=None,shape=None,pos=(0,-250)):
+        turtle.pencolor("white")
         if my_turtle is None:
             self.turtle=turtle.clone()
         else :
@@ -92,18 +101,31 @@ class SendButton (Button):
         if shape is None :
             self.turtle.shape('square')
             self.turtle.shapesize(2,10)
+
         else :
             turtle.addshape(shape)
             self.turtle.shape(shape)
+
         self.turtle.showturtle()
         self.turtle.onclick(self.fun)
         turtle.listen()
         self.view=view
+        turtle.pencolor("white")
+        turtle.penup()
+        turtle.goto(-10,-255)
+        turtle.write("Send")
+        turtle.pencolor("black")
         
+
+
     def fun (self,x=0,y=0):
-      
+        turtle.pencolor("white")
+        turtle.penup()
+        turtle.goto(-10,-255)
+        turtle.write("Send")
         self.view.send_msg()
-        
+
+
         
 #####################################################################################
 #####################################################################################
