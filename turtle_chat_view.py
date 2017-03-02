@@ -27,9 +27,9 @@ class TextBox (TextInput):
 #
     def draw_box (self):
         self.writer.penup()
-        self.writer.goto(-10,250)
+        self.writer.goto(-50,220)
         self.writer.pendown()
-        self.writer.write("CHAT")
+        self.writer.write("CHAT", font = ('Arial', 30))
         self.pos=(-145,-200)
         self.height=200
         self.width=150
@@ -47,7 +47,7 @@ class TextBox (TextInput):
         self.writer.clear()
         self.writer.goto(-130,-100)
         self.writer.pendown()
-        self.writer.write('Me :' + self.get_msg())
+        self.writer.write('Me :' + self.get_msg(), font=('Arial',16))
         
         
 #draw_box
@@ -110,10 +110,10 @@ class SendButton (Button):
         self.turtle.onclick(self.fun)
         turtle.listen()
         self.view=view
-        turtle.pencolor("white")
-        turtle.penup()
-        turtle.goto(-10,-255)
-        turtle.write("Send")
+##        turtle.pencolor("white")
+##        turtle.penup()
+##        turtle.goto(-10,-255)
+##        turtle.write("Send")
         turtle.pencolor("black")
         
 
@@ -121,8 +121,8 @@ class SendButton (Button):
     def fun (self,x=0,y=0):
         turtle.pencolor("white")
         turtle.penup()
-        turtle.goto(-10,-255)
-        turtle.write("Send")
+        turtle.goto(-30,-265)
+        turtle.write("Send",font = ('Bradley Hand ITC', 20))
         self.view.send_msg()
 
 
@@ -278,7 +278,7 @@ class View:
         for i in range (3):
             self.msg_queue_turtles[i].clear()
         for n in range (3):
-            self.msg_queue_turtles[n].write(self.msg_queue[n])
+            self.msg_queue_turtles[n].write(self.msg_queue[n],font=('Arial',16))
             
        
 
